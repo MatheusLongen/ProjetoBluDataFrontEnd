@@ -1,0 +1,84 @@
+.empresas-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  color: white;
+}
+
+.empresas-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.empresas-tabela th,
+.empresas-tabela td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-cadastrar {
+  background-color: #1a1a1a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.btn-cadastrar:hover {
+  background-color: #333;
+}
+
+.btn-acao {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-acao:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-acao:focus {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
+
+.btn-acao svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-voltar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.btn-voltar:hover {
+  color: #4a90e2;
+}
+
+.invisible-id {
+  display: none;
+}

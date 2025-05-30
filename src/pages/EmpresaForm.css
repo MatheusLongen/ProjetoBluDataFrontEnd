@@ -1,0 +1,50 @@
+.empresa-form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: white;
+}
+
+.empresa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.empresa-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.empresa-form input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  margin-top: 4px;
+}
+
+.form-botoes {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-botoes button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-botoes button:first-child {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.form-botoes button:last-child {
+  background-color: #e94b3c;
+  color: white;
+}
