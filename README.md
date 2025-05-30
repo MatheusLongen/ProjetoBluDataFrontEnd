@@ -11,7 +11,7 @@
 
 ## Para poder utilizar as api's que estão no backend desse projeto, deve-se modificar os seguintes endpoints (Caso Necessário):
 
--EmpresaForm.jsx: Linhas: 33 e 52
--Empresa.jsx: Linhas: 11 e 18
--Fornecedores.jsx: Linhas: 18 e 26
--FornecedorForm.jsx: Linhas: 26 e 75
+- EmpresaForm.jsx: Linhas: 33 e 52
+- Empresa.jsx: Linhas: 11 e 18
+- Fornecedores.jsx: Linhas: 18 e 26
+- FornecedorForm.jsx: Linhas: 26 e 75
