@@ -2,6 +2,7 @@ import './Empresas.css';
 import { FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Empresas() {
     const navigate = useNavigate();
@@ -14,11 +15,34 @@ export default function Empresas() {
             .catch(err => console.error('Erro ao buscar empresas:', err));
     }, []);
 
-    const handleDeletar = async (id) => {
-        await fetch(`https://localhost:7177/api/empresas/${id}`, {
-            method: 'DELETE'
+    const handleDeletar = (id) => {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao deletar a empresa, todos os fornecedores também serão deletados. Tem certeza que deseja confirmar essa exclusão?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, deletar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#e94b3c',
+            cancelButtonColor: '#4a90e2',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`https://localhost:7177/api/empresas/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        setEmpresas(empresas.filter(e => e.id !== id));
+                        Swal.fire('Deletado!', 'A empresa foi deletada com sucesso.', 'success');
+                    } else {
+                        Swal.fire('Erro!', 'Não foi possível deletar a empresa.', 'error');
+                    }
+                } catch (err) {
+                    Swal.fire('Erro!', 'Erro ao se conectar com o servidor.', 'error');
+                }
+            }
         });
-        setEmpresas(empresas.filter(e => e.id !== id));
     };
 
     function formatarCNPJ(cnpj) {

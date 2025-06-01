@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className="app-container">
         <h1 className="title">Sistema de Fornecedores</h1>
-        <p className="subtitle">Organize suas empresas e fornecedores com facilidade</p>
         <button className="btn-cadastrar" onClick={() => navigate('/empresas')}>
             Ir para Empresas
         </button>

@@ -2,6 +2,7 @@ import './Fornecedores.css';
 import { FaEdit, FaTrash, FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Fornecedores() {
     const navigate = useNavigate();
@@ -22,9 +23,35 @@ export default function Fornecedores() {
     }, []);
 
 
-    const handleDeletar = async (id) => {
-        await fetch(`https://localhost:7177/api/fornecedores/${id}`, { method: 'DELETE' });
-        setFornecedores(fornecedores.filter(f => f.Id !== id));
+    const handleDeletar = (id) => {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Tem certeza que deseja confirmar essa exclusão desse fornecedor?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, deletar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#e94b3c',
+            cancelButtonColor: '#4a90e2',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`https://localhost:7177/api/fornecedores/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        setFornecedores(current => current.filter(f => f.id !== id));
+                        Swal.fire('Deletado!', 'O fornecedor foi deletado com sucesso.', 'success');
+                    }
+                    else {
+                        Swal.fire('Erro!', 'Não foi possível deletar o fornecedor.', 'error');
+                    }
+                } catch (err) {
+                    Swal.fire('Erro!', 'Erro ao se conectar com o servidor.', 'error');
+                }
+            }
+        });
     };
 
     const fornecedoresFiltrados = fornecedores.filter(f =>

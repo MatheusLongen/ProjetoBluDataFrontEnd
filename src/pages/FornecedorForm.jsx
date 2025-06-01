@@ -123,23 +123,18 @@ export default function FornecedorForm() {
 
                 <label>
                     Empresa:
-                    <select
-                        value={fornecedor.empresaId}
-                        onChange={e => setFornecedor({ ...fornecedor, empresaId: Number(e.target.value) })}
-                        required
-                    >
+                    <select value={fornecedor.empresaId} onChange={e => setFornecedor({ ...fornecedor, empresaId: Number(e.target.value) })} >
                         <option value="">Selecione uma empresa</option>
+
                         {empresas.map(empresa => (
-                            <option key={empresa.id} value={empresa.id}>
-                                {empresa.nomeFantasia}
-                            </option>
+                            <option key={empresa.id} value={empresa.id}> {empresa.nomeFantasia} </option>
                         ))}
                     </select>
                 </label>
 
                 <label>
                     Nome:
-                    <input type="text" value={fornecedor.nome} onChange={e => setFornecedor({ ...fornecedor, nome: e.target.value })} required />
+                    <input type="text" value={fornecedor.nome} onChange={e => setFornecedor({ ...fornecedor, nome: e.target.value })} />
                 </label>
 
                 <label>
@@ -152,12 +147,12 @@ export default function FornecedorForm() {
 
                 <label>
                     CPF/CNPJ:
-                    <IMaskInput mask={mask} value={fornecedor.cpfCnpj} onAccept={value => setFornecedor({ ...fornecedor, cpfCnpj: value })} required />
+                    <IMaskInput mask={mask} value={fornecedor.cpfCnpj} onAccept={value => setFornecedor({ ...fornecedor, cpfCnpj: value })} />
                 </label>
 
                 <label>
                     Data de Cadastro:
-                    <input type="date" value={fornecedor.dataCadastro} />
+                    <input type="date" value={fornecedor.dataCadastro} onChange={e => setFornecedor({ ...fornecedor, dataCadastro: e.target.value })} readOnly />
                 </label>
 
                 {fornecedor.tipo === 'Física' && (
